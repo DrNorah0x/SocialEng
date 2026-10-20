@@ -242,7 +242,7 @@ function toolVideo(n){
 /* call */
 function toolCall(){
   stBody.innerHTML=`<div class="st-q">«معك ريم من الموارد البشرية… اسمك ضمن المستحقين للمكافأة، أعطني بيانات حسابك البنكي ورمز التحقق "قبل رفع الكشف الساعة 2". وعند تررد متلقي الاتصال تهدّده بأن اسمه سيسقط من الكشف.»</div>
-   <div class="st-sub">سمعتم المكالمة. ما الحيل التي استخدمها المتصل؟ ناقشوا قبل كشف الإجابة.</div>
+   <div class="st-sub"> ما الحيل التي استخدمها المتصل؟</div>
    <div><button class="sbtn go" type="button" id="cShow">اكشف الحيل</button></div>
    <div class="lesson" id="cLesson" hidden><div class="box"><h3>الحيل التي استُخدمت</h3><ul><li>الادعاء بتمثيل جهة موثوقة: «إدارة الموارد البشرية»</li><li>عرض مغرٍ: «مكافأة التميّز»</li><li>الاستعجال: «الكشف يُرفع الساعة 2»</li><li>التخويف: «سيسقط اسمك من الكشف»</li></ul></div>
      <div class="box"><h3>التصرف الصحيح</h3><ul><li>لا جهة رسمية تطلب رمز التحقق أو تحدّث بياناتك البنكية بمكالمة</li><li>أنهِ المكالمة بهدوء</li><li>تحقّق بنفسك عبر الأنظمة والقنوات الرسمية للجامعة</li><li>أبلغ عن المكالمة: <span class="ltr">${REPORT_EMAIL}</span></li></ul></div></div>`;
@@ -329,8 +329,8 @@ function playSet(S,items,O){
    <div class="mock-wrap ${shown?'revealed':''}">${mockHTML(m)}</div>
    ${shown?`<div class="verdict ${m.p?'p':'l'}"><h3>${m.p?'تصيّد ✕':O.ok}</h3>
       <ol>${m.flags.map(f=>`<li>${esc(f)}</li>`).join('')}</ol>
-      <div class="room">رأي القاعة: ${v?'تصيّد':'سليمة'} · ${v===m.p?'إجابة صحيحة 👏':'إجابة غير صحيحة'}</div></div>`
-   :`<div class="st-sub" style="text-align:center">ارفعوا أيديكم: تصيّد أم سليمة؟</div>
+      <div class="room"> ${v?'تصيّد':'سليمة'} · ${v===m.p?'إجابة صحيحة 👏':'إجابة غير صحيحة'}</div></div>`
+   :`<div class="st-sub" style="text-align:center"> تصيّد أم سليمة؟</div>
      <div class="vote"><button class="sbtn red" type="button" data-v="1">تصيّد</button><button class="sbtn green" type="button" data-v="0">سليمة</button></div>`}
    <div class="st-nav"><button class="sbtn" type="button" id="gp" ${S.i?'':'disabled'}>→ السابقة</button>
      ${shown?`<button class="sbtn" type="button" id="gu">إخفاء الجواب</button>`:''}
