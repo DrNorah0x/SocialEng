@@ -1,0 +1,450 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>أنشطة جلسة التصيّد الإلكتروني</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@500;600;700&display=swap">
+<style>
+/* Layout: projector-first. A home grid of the session's activities in order; each opens full-screen. Deliberately one dark look matching the deck's navy. */
+:root{
+  --bg:#0A1233; --bg2:#18225C; --ink:#F2F6FF; --muted:#A9B5D6; --line:rgba(255,255,255,.14); --tile:rgba(255,255,255,.05);
+  --teal:#2AD4C8; --on-teal:#04211F; --red:#FF6B57; --green:#4CD89B; --amber:#FFD27A;
+  --paper:#FFFFFF; --paper-ink:#1A2340; --paper-muted:#66708A;
+  --k1:#E21B3C; --k2:#1368CE; --k3:#C98B00; --k4:#26890C;
+  --f-display:"Readex Pro","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --f-body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{background:radial-gradient(110% 80% at 90% 0%,var(--bg2),var(--bg) 60%) fixed,var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.7;min-height:100vh}
+[hidden]{display:none!important}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.35;margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* home */
+.home{padding-block:44px 56px;display:grid;gap:30px}
+.brand{color:var(--teal);font-weight:600;font-size:.95rem}
+.home h1{font-size:clamp(1.9rem,4.6vw,3.1rem)}
+.home .lead{color:var(--muted);margin:0;font-size:1.1rem;max-width:60ch}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tile{background:var(--tile);border:1px solid var(--line);border-radius:16px;padding:18px 20px;text-align:start;cursor:pointer;display:grid;gap:6px;align-content:start;transition:background .2s,border-color .2s,transform .2s}
+.tile:hover{background:rgba(255,255,255,.09);border-color:var(--teal);transform:translateY(-2px)}
+.tile .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tile .num{font-family:var(--f-mono);font-weight:600;color:var(--on-teal);background:var(--teal);border-radius:8px;padding:0 9px;font-size:.95rem}
+.tile .sl{color:var(--muted);font-size:.82rem}
+.tile h2{font-size:1.3rem}
+.tile p{margin:0;color:var(--muted);font-size:.95rem}
+.foot{color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:1100px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.tiles{grid-template-columns:1fr}}
+
+/* stage */
+.stage{position:fixed;inset:0;z-index:100;background:radial-gradient(120% 90% at 85% 0%,var(--bg2),var(--bg) 60%);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.st-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line)}
+.st-top h2{font-size:1.1rem;font-weight:600;flex:1;min-width:0}
+.st-top .num{font-family:var(--f-mono);font-weight:600;color:var(--on-teal);background:var(--teal);border-radius:8px;padding:0 9px}
+.sbtn{background:rgba(255,255,255,.08);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:500;font-size:.95rem}
+.sbtn:hover{background:rgba(255,255,255,.16)}
+.sbtn.go{background:var(--teal);color:var(--on-teal);border-color:var(--teal);font-weight:700}
+.sbtn.red{background:var(--red);border-color:var(--red);color:#2A0700;font-weight:700}
+.sbtn.green{background:var(--green);border-color:var(--green);color:#03250F;font-weight:700}
+.sbtn[disabled]{opacity:.35;cursor:default}
+.st-body{flex:1;overflow:auto;padding:28px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.st-in{max-width:980px;margin:0 auto;display:grid;gap:22px}
+.st-q{font-family:var(--f-display);font-size:clamp(1.5rem,3.6vw,2.6rem);line-height:1.4;text-wrap:balance;font-weight:600}
+.st-sub{color:var(--muted);font-size:1.1rem}
+.st-nav{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.counter{font-family:var(--f-mono);color:var(--muted)}
+
+.poll-opt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--tile);border:1px solid var(--line);border-radius:12px;padding:12px 16px;position:relative;overflow:hidden}
+.poll-opt .fill{position:absolute;inset-block:0;right:0;background:rgba(42,212,200,.22);transition:width .3s}
+.poll-opt > *{position:relative}
+.poll-opt .t{font-size:1.3rem;font-weight:500}
+.tally{display:flex;align-items:center;gap:8px}
+.tally .n{font-family:var(--f-mono);font-size:1.5rem;font-weight:600;min-width:2.2ch;text-align:center}
+
+.mock-wrap{display:flex;justify-content:center}
+.mock{background:var(--paper);color:var(--paper-ink);border-radius:18px;padding:18px 20px;width:min(640px,100%);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);font-size:1.15rem;line-height:1.85;position:relative}
+.mock .ex{position:absolute;top:-11px;left:16px;background:var(--amber);color:#3A2600;font-size:.72rem;font-weight:700;border-radius:999px;padding:1px 10px}
+.mock .hd{display:flex;gap:10px;align-items:center;border-bottom:1px solid #E3E7EF;padding-bottom:10px;margin-bottom:12px}
+.mock .av{width:40px;height:40px;border-radius:50%;background:#D7DDEA;display:grid;place-items:center;font-weight:700;color:#3A4566;flex:none}
+.mock .from{font-weight:700}
+.mock .addr{color:var(--paper-muted);font-size:.9rem;direction:ltr;unicode-bidi:isolate;word-break:break-all}
+.mock .subj{font-weight:700;margin-bottom:6px}
+.mock .linkbtn{display:inline-block;background:#1D63D8;color:#fff;border-radius:8px;padding:6px 16px;margin-top:8px;font-weight:600}
+.mock .url{color:#1D63D8;text-decoration:underline;direction:ltr;unicode-bidi:isolate;word-break:break-all}
+.bubble{background:#EEF1F6;border-radius:16px 16px 4px 16px;padding:12px 16px}
+.mock.call{background:linear-gradient(#1F2A4A,#0F1630);color:#fff;text-align:center}
+.mock.call .who{font-size:1.4rem;font-weight:700}
+.mock.call .num{color:#B5C0DD;direction:ltr;unicode-bidi:isolate}
+.mock.call .line{background:rgba(255,255,255,.1);border-radius:12px;padding:10px 14px;margin-top:14px;text-align:start}
+.mock.qr{text-align:center;background:#FFF6D6}
+.mock.qr canvas{width:150px;height:150px;image-rendering:pixelated;margin:10px auto;display:block;border:8px solid #fff;border-radius:6px}
+.mock .acts{display:flex;gap:18px;color:#8A93A8;font-size:.85rem;border-top:1px solid #E3E7EF;margin-top:12px;padding-top:8px}
+.mock.scene{background:#F4F1FA}
+.mock.scene .bubble{background:#fff;margin-top:8px}
+mark{background:transparent;color:inherit;border-radius:4px;transition:background .3s,box-shadow .3s}
+.revealed mark.f{background:rgba(255,107,87,.28);box-shadow:0 0 0 2px var(--red)}
+.revealed mark.g{background:rgba(76,216,155,.28);box-shadow:0 0 0 2px var(--green)}
+.revealed mark::after{content:attr(data-n);font-family:var(--f-mono);font-size:.7rem;font-weight:700;background:var(--red);color:#fff;border-radius:999px;padding:0 6px;margin-inline-start:4px;vertical-align:super}
+.revealed mark.g::after{background:var(--green);color:#03250F}
+.vote{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.vote .sbtn{font-size:1.3rem;padding:12px 36px}
+.verdict{border-radius:14px;padding:16px 20px;border:1px solid var(--line);background:var(--tile)}
+.verdict h3{font-size:1.5rem;margin-bottom:6px}
+.verdict.p h3{color:var(--red)} .verdict.l h3{color:var(--green)}
+.verdict ol{margin:6px 0 0;padding-inline-start:22px;display:grid;gap:4px;font-size:1.1rem}
+.verdict .room{color:var(--muted);font-size:.95rem;margin-top:8px}
+.score{font-family:var(--f-mono);color:var(--teal)}
+
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qopt{border-radius:12px;padding:18px;color:#fff;font-size:1.25rem;font-weight:600;display:flex;gap:12px;align-items:center;min-height:86px;transition:opacity .3s,transform .3s}
+.qopt .sh{font-size:1.3rem;flex:none;width:1.6em;text-align:center}
+.qopt:nth-child(1){background:var(--k1)} .qopt:nth-child(2){background:var(--k2)} .qopt:nth-child(3){background:var(--k3)} .qopt:nth-child(4){background:var(--k4)}
+.revealed .qopt{opacity:.28}
+.revealed .qopt.right{opacity:1;transform:scale(1.02);box-shadow:0 0 0 4px #fff}
+.explain{background:rgba(255,255,255,.06);border-radius:12px;padding:12px 16px;font-size:1.1rem}
+@media (max-width:640px){.qopts{grid-template-columns:1fr}}
+
+.lesson{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.box{background:var(--tile);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.box h3{font-size:1.15rem;margin-bottom:6px;color:var(--teal)}
+.box ul{margin:0;padding-inline-start:20px;font-size:1.12rem}
+@media (max-width:640px){.lesson{grid-template-columns:1fr}}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs .sbtn[aria-selected="true"]{background:var(--teal);color:var(--on-teal);border-color:var(--teal);font-weight:700}
+.statusbar{background:#E9ECF2;color:#333;font-family:var(--f-mono);font-size:.85rem;padding:4px 10px;border-radius:0 0 10px 10px;margin:14px -20px -18px;direction:ltr;text-align:left;min-height:1.9em;word-break:break-all}
+.fakelink{background:none;border:0;padding:0;color:#1D63D8;text-decoration:underline;cursor:pointer;font-weight:600;font-size:inherit}
+.domains{display:grid;gap:10px}
+.dom{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:center;text-align:start;background:var(--tile);border:1px solid var(--line);border-radius:12px;padding:12px 16px;cursor:pointer}
+.dom .u{font-family:var(--f-mono);font-size:1.15rem;direction:ltr;unicode-bidi:isolate;text-align:left;word-break:break-all;grid-column:2}
+.dom .ic{grid-row:1/span 2;font-size:1.5rem;width:1.4em;text-align:center}
+.dom .why{grid-column:2;color:var(--muted);font-size:1rem;display:none}
+.dom.shown .why{display:block}
+.dom.shown.ok{border-color:var(--green)} .dom.shown.bad{border-color:var(--red)}
+.dom.shown.ok .ic{color:var(--green)} .dom.shown.bad .ic{color:var(--red)}
+.rsteps{display:grid;gap:12px;counter-reset:r;margin:0;padding:0;list-style:none}
+.rsteps li{counter-increment:r;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--tile);border-radius:14px;padding:14px 18px;font-size:1.2rem}
+.rsteps li::before{content:counter(r);font-family:var(--f-mono);font-weight:600;background:var(--teal);color:var(--on-teal);border-radius:50%;width:1.9em;height:1.9em;display:grid;place-items:center;font-size:1rem}
+.channels{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;background:var(--tile);border:1px solid var(--teal);border-radius:16px;padding:18px 22px}
+.channels .lbl{color:var(--muted);font-size:.95rem}
+.channels .val{font-size:1.5rem;font-weight:600}
+.channels a{color:var(--teal)}
+.qrbox{background:#fff;border-radius:12px;padding:8px;width:170px;height:170px;display:grid;place-items:center}
+.qrbox img{display:block}
+@media (max-width:640px){.channels{grid-template-columns:1fr}.qrbox{justify-self:center}}
+.big-link{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--on-teal);font-weight:700;text-decoration:none;padding:12px 24px;border-radius:12px;font-size:1.1rem}
+.disc{display:grid;gap:10px;margin:0;padding-inline-start:22px;font-size:1.25rem}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}
+.rule{background:var(--tile);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:grid;gap:4px}
+.rule b{font-family:var(--f-display);font-size:1.2rem;color:var(--teal)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div dir="rtl" lang="ar">
+  <main class="wrap home" id="home">
+    <div class="brand">جامعة الطائف · إدارة الأمن السيبراني</div>
+    <div style="display:grid;gap:10px">
+      <h1>التصيّد الإلكتروني: خطر متجدّد.. وتهديد مستمر</h1>
+      <p class="lead">أنشطة الجلسة التوعوية. شارك برأيك في كل نشاط، واكتشف بنفسك كيف تُصنع رسائل التصيّد وكيف تكشفها.</p>
+    </div>
+    <div class="tiles" id="tiles"></div>
+    <div class="foot"><span>للإبلاغ عن أي محاولة تصيّد: <b class="ltr">ir@tu.edu.sa</b></span><span>اضغط على أي نشاط لعرضه بملء الشاشة</span></div>
+  </main>
+</div>
+
+<div class="stage" id="stage" hidden dir="rtl" lang="ar" role="dialog" aria-modal="true" aria-labelledby="stTitle">
+  <div class="st-top">
+    <span class="num" id="stNum"></span>
+    <h2 id="stTitle"></h2>
+    <button class="sbtn" id="stFull" type="button">ملء الشاشة</button>
+    <button class="sbtn" id="stHome" type="button">كل الأنشطة</button>
+    <button class="sbtn go" id="stNext" type="button">النشاط التالي ←</button>
+  </div>
+  <div class="st-body"><div class="st-in" id="stBody"></div></div>
+</div>
+
+<script>
+document.documentElement.lang='ar';document.documentElement.dir='rtl';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const D='tu.edu.sa',B='tu';
+const REPORT_EMAIL='ir@tu.edu.sa';
+const REPORT_FORM='https://forms.microsoft.com/r/prijvFCTuw';
+const REPORT_PAGE='https://www.tu.edu.sa/Ar/Cybersecurity-Administration/334/Pages/23313/Report-a-Cyber-Incident';
+
+const ACTS=[
+ {id:'call',name:'مكالمة من «الموارد البشرية»',desc:'خبر سعيد عن مكافأة… ماذا لاحظت في المكالمة؟',slide:6,fn:()=>toolCall()},
+ {id:'social',name:'احتيال عبر التواصل الاجتماعي والمباشر',desc:'4 أمثلة من المنصات و4 مواقف وجهاً لوجه. هل تكشفها؟',slide:6,fn:()=>toolChannels()},
+ {id:'game',name:'تصيّد أم سليمة؟',desc:'8 رسائل حقيقية الشكل. هل تكشف المزيّف منها؟',slide:7,fn:()=>toolGame()},
+ {id:'links',name:'افحص الرابط قبل أن تضغط',desc:'العنوان الظاهر والعنوان الحقيقي، واكتشف النطاق السليم.',slide:9,fn:()=>toolDemo()},
+ {id:'report',name:'كيف تُبلغ؟',desc:'البريد الإلكتروني أو نموذج الإبلاغ عبر رمز QR.',slide:11,fn:()=>toolReport()},
+ {id:'quiz',name:'المسابقة',desc:'7 أسئلة سريعة. من يجيب أسرع؟',slide:12,fn:()=>toolQuiz()},
+ {id:'recap',name:'خمس قواعد تحميك',desc:'خلاصة الجلسة في شاشة واحدة.',slide:13,fn:()=>toolRecap()}
+];
+
+$('#tiles').innerHTML=ACTS.map((a,i)=>`<button class="tile" type="button" data-a="${i}"><span class="top"><span class="num">${i+1}</span><span class="sl">الشريحة ${a.slide}</span></span><h2>${esc(a.name)}</h2><p>${esc(a.desc)}</p></button>`).join('');
+$('#tiles').onclick=e=>{const t=e.target.closest('[data-a]');if(t)open(+t.dataset.a)};
+
+const stage=$('#stage'),stBody=$('#stBody');let curA=-1,stKeys=null;
+function open(i){
+  curA=i;const a=ACTS[i];stKeys=null;
+  $('#stNum').textContent=i+1;$('#stTitle').textContent=a.name;
+  $('#stNext').hidden=i>=ACTS.length-1;
+  stage.hidden=false;document.body.style.overflow='hidden';stBody.parentElement.scrollTop=0;
+  a.fn();
+  try{history.replaceState(null,'','#'+a.id)}catch(e){}
+}
+function home(){stage.hidden=true;document.body.style.overflow='';curA=-1;try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
+$('#stHome').onclick=home;
+$('#stNext').onclick=()=>{if(curA<ACTS.length-1)open(curA+1)};
+$('#stFull').onclick=()=>{try{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen().catch(()=>{})}catch(e){}};
+document.addEventListener('keydown',e=>{
+  if(stage.hidden)return;
+  if(e.key==='Escape'&&!document.fullscreenElement){home();return}
+  if(stKeys&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){e.preventDefault();stKeys(e.key==='ArrowLeft'?1:-1)}
+});
+
+/* poll */
+const POLL=[
+ {q:'خلال الشهر الماضي، هل وصلتك رسالة أو مكالمة مشبوهة؟',o:['نعم، أكثر من مرة','نعم، مرة واحدة','لا أتذكر','لا']},
+ {q:'هل سبق أن ضغطت على رابط ثم شككت فيه بعدها؟',o:['نعم','لا','لست متأكداً']}
+];
+let pollIdx=0,pollCounts=POLL.map(p=>p.o.map(()=>0));
+function toolPoll(){
+  const p=POLL[pollIdx],c=pollCounts[pollIdx],mx=Math.max(1,...c);
+  stBody.innerHTML=`<div class="counter">سؤال ${pollIdx+1} من ${POLL.length} · ارفع يدك</div>
+   <div class="st-q">${esc(p.q)}</div>
+   <div style="display:grid;gap:10px">${p.o.map((o,i)=>`<div class="poll-opt"><span class="fill" style="width:${c[i]/mx*100}%"></span><span class="t">${esc(o)}</span>
+     <span class="tally"><button class="sbtn" type="button" data-p="${i}" data-d="-1" aria-label="إنقاص">−</button><span class="n">${c[i]}</span><button class="sbtn go" type="button" data-p="${i}" data-d="1" aria-label="زيادة">+</button></span></div>`).join('')}</div>
+   <div class="st-nav"><button class="sbtn" type="button" id="pp" ${pollIdx?'':'disabled'}>→ السؤال السابق</button><button class="sbtn" type="button" id="pn" ${pollIdx<POLL.length-1?'':'disabled'}>السؤال التالي ←</button></div>`;
+  stBody.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{const i=+b.dataset.p;c[i]=Math.max(0,c[i]+ +b.dataset.d);toolPoll()});
+  const nav=d=>{const n=pollIdx+d;if(n>=0&&n<POLL.length){pollIdx=n;toolPoll()}};
+  $('#pp').onclick=()=>nav(-1);$('#pn').onclick=()=>nav(1);stKeys=nav;
+}
+
+/* video */
+function toolVideo(n){
+  const v=n===1?{url:'https://www.youtube.com/watch?v=RVuIIkgYeKY',before:'انتبه للحظة التي بدأ فيها الخطأ.',after:['ما أول علامة كان يجب أن تثير الشك؟','ماذا كان يمكن أن يفعل بشكل مختلف؟','هل مرّ عليك موقف مشابه؟']}
+              :{url:'https://www.youtube.com/watch?v=lBH2j-FjpIo&t=3s',before:'عُدّ كم حيلة من هذه الحيل الأربع ستظهر: الاستعجال، العروض الوهمية، التخويف، انتحال جهة موثوقة.',after:['كم حيلة لاحظت؟ وما هي؟','أين كانت نقطة التحوّل في القصة؟','ما الإجراء الذي كان سيمنع ما حدث؟']};
+  stBody.innerHTML=`<div class="counter">قبل المشاهدة</div><div class="st-q">${esc(v.before)}</div>
+   <div><a class="big-link" href="${v.url}" target="_blank" rel="noopener">▶ مشاهدة الفيديو</a></div>
+   <div><button class="sbtn go" type="button" id="vAfter">بعد المشاهدة: أسئلة للنقاش</button></div><ol class="disc" id="vList" hidden>${v.after.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>`;
+  $('#vAfter').onclick=()=>{$('#vList').hidden=false;$('#vAfter').hidden=true};
+}
+
+/* call */
+function toolCall(){
+  stBody.innerHTML=`<div class="st-q">«معك ريم من الموارد البشرية… اسمك ضمن المستحقين للمكافأة، أعطني الرمز لإكمال الصرف.»</div>
+   <div class="st-sub">سمعتم المكالمة. ما الحيل التي استخدمها المتصل؟ ناقشوا قبل كشف الإجابة.</div>
+   <div><button class="sbtn go" type="button" id="cShow">اكشف الحيل</button></div>
+   <div class="lesson" id="cLesson" hidden><div class="box"><h3>الحيل التي استُخدمت</h3><ul><li>الادعاء بتمثيل جهة موثوقة: «إدارة الموارد البشرية»</li><li>عرض مغرٍ: «مكافأة التميّز»</li><li>الاستعجال: «الكشف يُرفع الساعة 2»</li><li>التخويف: «سيسقط اسمك من الكشف»</li></ul></div>
+     <div class="box"><h3>التصرف الصحيح</h3><ul><li>لا جهة رسمية تطلب رمز التحقق أو تحدّث بياناتك البنكية بمكالمة</li><li>أنهِ المكالمة بهدوء</li><li>تحقّق بنفسك عبر الأنظمة والقنوات الرسمية للجامعة</li><li>أبلغ عن المكالمة: <span class="ltr">${REPORT_EMAIL}</span></li></ul></div></div>`;
+  $('#cShow').onclick=()=>{$('#cLesson').hidden=false;$('#cShow').hidden=true};
+}
+
+/* game */
+const GAME=[
+ {type:'sms',ch:'رسالة نصية',from:'SHIP-INFO',body:`عميلنا العزيز، <mark class="f" data-n="1">شحنتك متوقفة</mark> لعدم سداد رسوم التوصيل <mark class="f" data-n="2">(9 ريالات)</mark>. <mark class="f" data-n="3">ادفع خلال 24 ساعة</mark> وإلا ستُعاد الشحنة: <mark class="f" data-n="4"><span class="url">http://shipp-track-sa.info/pay</span></mark>`,
+  p:true,flags:['لم يذكر اسم شركة الشحن ولا رقم الشحنة','مبلغ صغير يطمئنك، والهدف الحقيقي بيانات بطاقتك','الاستعجال: «خلال 24 ساعة»','رابط لا يتبع أي جهة رسمية']},
+ {type:'email',ch:'بريد إلكتروني',from:'الدعم الفني',addr:`it-support@<mark class="f" data-n="1">${B}-edu-sa.com</mark>`,subj:`<mark class="f" data-n="2">تنبيه أخير: سيتم إيقاف بريدك الجامعي خلال ساعتين</mark>`,
+  body:`لوحظ نشاط غير اعتيادي على حسابك. لتجنّب الإيقاف <mark class="f" data-n="3">أكّد اسم المستخدم وكلمة المرور</mark> عبر الرابط أدناه.`,btn:'تأكيد الحساب',
+  p:true,flags:[`النطاق يشبه نطاق الجامعة لكنه ليس ${D}`,'التخويف والاستعجال معاً','لا توجد جهة رسمية تطلب كلمة المرور عبر رابط']},
+ {type:'email',ch:'بريد إلكتروني',from:'عمادة شؤون الطلاب',addr:`events@<mark class="g" data-n="1">${D}</mark>`,subj:'دعوة لحضور ملتقى التوعية بالأمن السيبراني',
+  body:`تدعوكم العمادة لحضور الملتقى يوم الأحد القادم في المسرح الرئيسي. <mark class="g" data-n="2">التسجيل متاح عبر البوابة الإلكترونية المعتادة.</mark> <mark class="g" data-n="3">لا يتطلب الحضور أي بيانات إضافية.</mark>`,
+  p:false,flags:['المرسل من النطاق الرسمي للجامعة','لا يحتوي روابط، ويحيلك إلى البوابة التي تعرفها','لا يطلب بيانات ولا يستعجلك. ومع ذلك، ادخل البوابة بكتابة عنوانها بنفسك']},
+ {type:'sms',ch:'رسالة نصية',from:'Bank',body:`رمز التحقق لعملية الدخول التي طلبتها: 482913. <mark class="g" data-n="1">لا تشارك هذا الرمز مع أي شخص</mark>، <mark class="g" data-n="2">ولن نطلبه منك أبداً.</mark>`,
+  p:false,flags:['الرسالة نفسها تحذّرك من مشاركة الرمز','لا تحتوي رابطاً ولا تطلب منك شيئاً','انتبه: إذا وصلك رمز لم تطلبه فهناك من يحاول الدخول لحسابك؛ لا تشاركه وغيّر كلمة المرور']},
+ {type:'social',ch:'منصة تواصل',from:'مسابقات اليوم الوطني',body:`<mark class="f" data-n="1">مبروك! فزت بجهاز جوال حديث</mark> في سحب اليوم الوطني. لاستلام الجائزة <mark class="f" data-n="2">أرسل صورة هويتك ورقم حسابك البنكي</mark> <mark class="f" data-n="3">قبل نهاية اليوم</mark>.`,
+  p:true,flags:['عرض وهمي مرتبط بمناسبة وطنية، ولم تشارك في أي سحب','طلب بيانات شخصية وبنكية حسّاسة','الاستعجال: «قبل نهاية اليوم»']},
+ {type:'call',ch:'مكالمة هاتفية',from:'خدمة العملاء',num:'+966 5X XXX XXXX',lines:[`<mark class="f" data-n="1">«معك موظف من البنك.</mark> <mark class="f" data-n="2">رصدنا عملية شراء مشبوهة بقيمة 4,800 ريال على بطاقتك.»</mark>`,`«لإيقافها فوراً <mark class="f" data-n="3">أعطني الرمز الذي وصلك الآن</mark>.»`],
+  p:true,flags:['ادعاء تمثيل جهة موثوقة من رقم جوال عادي','التخويف بعملية مالية كبيرة','البنك لا يطلب رمز التحقق أبداً']},
+ {type:'qr',ch:'رمز QR في مكان عام',from:'ملصق على عمود في موقف السيارات',body:`<mark class="f" data-n="1">ادفع رسوم الموقف من هنا</mark> وتجنّب المخالفة.<br><mark class="f" data-n="2">امسح الرمز</mark>`,
+  p:true,flags:['ملصق غير رسمي فوق لوحة عامة، وقد يغطي الرمز الأصلي','الرمز يفتح صفحة دفع لا تعرف مصدرها. ادفع من التطبيق الرسمي فقط']},
+ {type:'email',ch:'بريد إلكتروني',from:'د. خالد (مدير الإدارة)',addr:`<mark class="f" data-n="1">dr.khaled.office@gmail.com</mark>`,subj:'طلب خاص',
+  body:`أنا في اجتماع ولا أستطيع الاتصال. <mark class="f" data-n="2">أحتاج منك شراء 5 بطاقات مسبقة الدفع بشكل عاجل</mark> <mark class="f" data-n="3">وأرجو أن يبقى الأمر بيننا</mark>، وسأعوضك لاحقاً.`,
+  p:true,flags:['الاسم الظاهر لمديرك، لكن العنوان بريد شخصي خارجي','طلب مالي عاجل وغير معتاد','طلب السرية لمنعك من التحقق مع أحد']}
+];
+function qrCanvas(c){
+  const n=25,s=6,x=c.getContext('2d');c.width=c.height=n*s;x.fillStyle='#fff';x.fillRect(0,0,n*s,n*s);x.fillStyle='#111';
+  let r=7;const rnd=()=>{r=(r*9301+49297)%233280;return r/233280};
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++)if(rnd()>.55)x.fillRect(i*s,j*s,s,s);
+  for(const [a,b] of [[0,0],[n-7,0],[0,n-7]]){x.fillStyle='#fff';x.fillRect((a-1)*s,(b-1)*s,9*s,9*s);x.fillStyle='#111';x.fillRect(a*s,b*s,7*s,7*s);x.fillStyle='#fff';x.fillRect((a+1)*s,(b+1)*s,5*s,5*s);x.fillStyle='#111';x.fillRect((a+2)*s,(b+2)*s,3*s,3*s)}
+}
+const EX='<span class="ex">مثال تدريبي</span>';
+function mockHTML(m){
+  if(m.type==='sms')return `<div class="mock">${EX}<div class="hd"><div class="av">✉</div><div><div class="from" dir="ltr">${esc(m.from)}</div><div class="addr">SMS</div></div></div><div class="bubble">${m.body}</div></div>`;
+  if(m.type==='email')return `<div class="mock">${EX}<div class="hd"><div class="av">${esc(m.from[0])}</div><div style="min-width:0"><div class="from">${esc(m.from)}</div><div class="addr">${m.addr}</div></div></div><div class="subj">${m.subj}</div><div>${m.body}</div>${m.btn?`<span class="linkbtn">${esc(m.btn)}</span>`:''}</div>`;
+  if(m.type==='social')return `<div class="mock">${EX}<div class="hd"><div class="av">★</div><div><div class="from">${esc(m.from)}</div><div class="addr" style="direction:rtl">${esc(m.sub||'رسالة مباشرة · حساب غير موثّق')}</div></div></div><div class="bubble">${m.body}</div></div>`;
+  if(m.type==='post')return `<div class="mock">${EX}<div class="hd"><div class="av">${esc(m.av)}</div><div style="min-width:0"><div class="from">${esc(m.from)}</div><div class="addr" style="direction:rtl">${m.handle}</div></div></div><div>${m.body}</div><div class="acts"><span>إعجاب</span><span>تعليق</span><span>مشاركة</span></div></div>`;
+  if(m.type==='scene')return `<div class="mock scene">${EX}<div class="hd"><div class="av">${m.icon}</div><div style="min-width:0"><div class="from">${esc(m.who)}</div><div class="addr" style="direction:rtl">المكان: ${esc(m.place)}</div></div></div>${m.lines.map(l=>`<div class="bubble">${l}</div>`).join('')}</div>`;
+  if(m.type==='call')return `<div class="mock call">${EX}<div class="addr" style="color:#9fb0d8;direction:rtl">مكالمة واردة</div><div class="who">${esc(m.from)}</div><div class="num">${esc(m.num)}</div>${m.lines.map(l=>`<div class="line">${l}</div>`).join('')}</div>`;
+  if(m.type==='qr')return `<div class="mock qr">${EX}<div class="addr" style="direction:rtl">${esc(m.from)}</div><div style="font-weight:700;font-size:1.25rem;margin-top:6px">${m.body}</div><canvas aria-hidden="true"></canvas></div>`;
+}
+const CHAN=[
+ {type:'post',ch:'منصة تواصل مهني',from:'سلطان | مستشار توظيف',av:'س',handle:`<mark class="f" data-n="4">عضو منذ أسبوعين</mark>`,
+  body:`<mark class="f" data-n="1">فرصة عمل عن بُعد براتب 15,000 ريال لساعتين يومياً فقط!</mark> أرسل سيرتك الذاتية <mark class="f" data-n="2">وصورة هويتك</mark>، <mark class="f" data-n="3">مع رسوم تسجيل 200 ريال</mark> تُسترد بعد القبول.`,
+  p:true,flags:['عرض مغرٍ لا يتناسب مع الجهد المطلوب','طلب صورة الهوية من أول تواصل','رسوم مسبقة؛ الجهات الجادة لا تطلب مالاً مقابل التوظيف','الحساب أُنشئ حديثاً']},
+ {type:'social',ch:'رسالة من حساب صديق',from:'أحمد (صديقك)',sub:'تطبيق مراسلة',
+  body:`هلا، <mark class="f" data-n="1">أنا في موقف محرج</mark>، ممكن <mark class="f" data-n="2">تحوّل لي 1,500 ريال الحين</mark> وأرجعها بكرة؟ <mark class="f" data-n="3">لا تتصل، ما أقدر أرد الحين.</mark>`,
+  p:true,flags:['قصة عاطفية تستعجلك','طلب تحويل مالي فوري','يمنعك من التحقق بالاتصال؛ غالباً الحساب مخترق. اتصل بصديقك على رقمه قبل أي تحويل']},
+ {type:'post',ch:'منصة تواصل اجتماعي',from:'منح جامعة الطائف 🎓',av:'م',handle:`<mark class="f" data-n="1"><bdi dir="ltr">@tu_scholarships_2026</bdi> · غير موثّق</mark>`,
+  body:`<mark class="f" data-n="2">آخر يوم للتسجيل</mark> في منحة الدراسات العليا الممولة بالكامل! سجّل بياناتك <mark class="f" data-n="3">عبر الرابط في البايو</mark> قبل منتصف الليل.`,
+  p:true,flags:['حساب غير موثّق ينتحل اسم الجامعة','الاستعجال: «آخر يوم… قبل منتصف الليل»','رابط خارجي بدلاً من موقع الجامعة الرسمي tu.edu.sa']},
+ {type:'post',ch:'منصة تواصل اجتماعي',from:'جامعة الطائف',av:'ج',handle:`<mark class="g" data-n="1">الحساب الرسمي · موثّق ✓</mark>`,
+  body:`تعلن الجامعة عن بدء التسجيل في برامج الدراسات العليا. <mark class="g" data-n="2">التقديم عبر البوابة الإلكترونية في موقع الجامعة الرسمي.</mark> <mark class="g" data-n="3">لا نطلب أي رسوم أو بيانات عبر الرسائل الخاصة.</mark>`,
+  p:false,flags:['حساب رسمي موثّق','يحيلك إلى الموقع الرسمي دون روابط مختصرة','يوضّح أنه لا يطلب بيانات عبر الرسائل. ومع ذلك، ادخل الموقع بكتابة عنوانه بنفسك']},
+ {type:'scene',ch:'تواصل مباشر',place:'مكتبك في الكلية',who:'شخص بزيّ رسمي وبطاقة معلّقة',icon:'👤',
+  lines:[`«<mark class="f" data-n="1">أنا من شركة الصيانة المتعاقدة مع الجامعة</mark>، أرسلوني أفحص جهازك.»`,`«<mark class="f" data-n="2">عندي أجهزة كثيرة اليوم</mark>، <mark class="f" data-n="3">أعطني كلمة المرور</mark> عشان أخلص بسرعة.»`],
+  p:true,flags:['يعتمد على المظهر والبطاقة لكسب الثقة، ولم تطلب أنت أي صيانة','الاستعجال','لا أحد يحتاج كلمة مرورك. تحقّق مع الجهة المختصة قبل السماح له بلمس جهازك']},
+ {type:'scene',ch:'تواصل مباشر',place:'باب مبنى يتطلب بطاقة دخول',who:'شخص يحمل صناديق ثقيلة',icon:'📦',
+  lines:[`«<mark class="f" data-n="1">الله يعافيك، يدي مشغولة</mark>، <mark class="f" data-n="2">ممكن تفتح لي الباب ببطاقتك؟</mark> <mark class="f" data-n="3">نسيت بطاقتي في السيارة.</mark>»`],
+  p:true,flags:['يستغل لطفك وإحراج الموقف','يريد الدخول خلفك إلى منطقة مقيدة دون صلاحية','عذر جاهز. وجّهه بلطف إلى الأمن أو الاستقبال']},
+ {type:'scene',ch:'تواصل مباشر (طُعم)',place:'موقف السيارات',who:'وجدت ذاكرة USB على الأرض',icon:'🔌',
+  lines:[`ملصق عليها: <mark class="f" data-n="1">«رواتب ومكافآت 2026 - سري»</mark>`,`<mark class="f" data-n="2">تفكّر توصلها بجهازك لتعرف صاحبها.</mark>`],
+  p:true,flags:['الطُّعم: عنوان يثير الفضول','توصيلها بجهازك قد يشغّل برمجيات ضارة. سلّمها لإدارة الأمن السيبراني دون فتحها']},
+ {type:'scene',ch:'تواصل مباشر',place:'مكتبك في الكلية',who:'موظف من عمادة تقنية المعلومات',icon:'👤',
+  lines:[`«<mark class="g" data-n="1">بخصوص طلب الدعم اللي فتحته أمس</mark>، جيت أركّب التحديث.»`,`«<mark class="g" data-n="2">هذه بطاقتي الجامعية</mark>، <mark class="g" data-n="3">وأدخل كلمة المرور بنفسك، أنا ما أحتاجها.</mark>»`],
+  p:false,flags:['الزيارة مرتبطة بطلب فتحته أنت','يعرّف بنفسه ببطاقة رسمية','لا يطلب كلمة المرور. وإن شككت فاتصل بالعمادة للتأكد']}
+];
+function playSet(S,items,O){
+  const again=()=>playSet(S,items,O);
+  if(S.i>=items.length){
+    const right=items.filter((m,i)=>S.v[i]!=null&&S.v[i]===m.p).length,voted=Object.keys(S.v).length;
+    stBody.innerHTML=`<div class="counter">النتيجة</div><div class="st-q">أصابت القاعة في ${right} من ${voted} ${O.unitP}</div>
+     <div class="st-sub">${items.filter(m=>m.p).length} من ${items.length} ${O.unitP} كانت تصيّداً. ${O.endNote}</div>
+     <div class="st-nav"><button class="sbtn" type="button" id="gb">→ رجوع</button><button class="sbtn go" type="button" id="gr">↺ إعادة اللعبة</button></div>`;
+    $('#gb').onclick=()=>{S.i=items.length-1;again()};$('#gr').onclick=()=>{S.i=0;S.v={};again()};
+    stKeys=d=>{if(d<0){S.i=items.length-1;again()}};return;
+  }
+  const m=items[S.i],v=S.v[S.i],shown=v!=null;
+  const right=items.filter((x,i)=>S.v[i]!=null&&S.v[i]===x.p).length;
+  stBody.innerHTML=`<div class="st-nav"><span class="counter">${O.unit} ${S.i+1} من ${items.length} · ${esc(m.ch)}</span><span class="score">نتيجة القاعة: ${right} / ${Object.keys(S.v).length}</span></div>
+   <div class="mock-wrap ${shown?'revealed':''}">${mockHTML(m)}</div>
+   ${shown?`<div class="verdict ${m.p?'p':'l'}"><h3>${m.p?'تصيّد ✕':O.ok}</h3>
+      <ol>${m.flags.map(f=>`<li>${esc(f)}</li>`).join('')}</ol>
+      <div class="room">رأي القاعة: ${v?'تصيّد':'سليمة'} · ${v===m.p?'إجابة صحيحة 👏':'إجابة غير صحيحة'}</div></div>`
+   :`<div class="st-sub" style="text-align:center">ارفعوا أيديكم: تصيّد أم سليمة؟</div>
+     <div class="vote"><button class="sbtn red" type="button" data-v="1">تصيّد</button><button class="sbtn green" type="button" data-v="0">سليمة</button></div>`}
+   <div class="st-nav"><button class="sbtn" type="button" id="gp" ${S.i?'':'disabled'}>→ السابقة</button>
+     ${shown?`<button class="sbtn" type="button" id="gu">إخفاء الجواب</button>`:''}
+     <button class="sbtn ${shown?'go':''}" type="button" id="gn">${S.i===items.length-1?'النتيجة ←':'التالية ←'}</button></div>`;
+  const cv=stBody.querySelector('canvas');if(cv)qrCanvas(cv);
+  stBody.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{S.v[S.i]=b.dataset.v==='1';again()});
+  const nav=d=>{S.i=Math.max(0,S.i+d);again()};
+  $('#gp').onclick=()=>nav(-1);$('#gn').onclick=()=>nav(1);if($('#gu'))$('#gu').onclick=()=>{delete S.v[S.i];again()};
+  stKeys=nav;
+}
+const G1={i:0,v:{}},G2={i:0,v:{}};
+function toolGame(){playSet(G1,GAME,{unit:'رسالة',unitP:'رسائل',ok:'رسالة سليمة ✓',endNote:'العلامة المشتركة بينها: ضغط عليك لتتصرف بسرعة قبل أن تتحقق.'})}
+function toolChannels(){playSet(G2,CHAN,{unit:'مثال',unitP:'أمثلة',ok:'تصرّف سليم ✓',endNote:'سواء كانت منشوراً على منصة أو شخصاً أمامك: الثقة لا تُبنى على المظهر أو الاسم، بل على التحقق.'})}
+
+/* links demo */
+let demoTab=0;
+function toolDemo(){
+  const tabs=`<div class="tabs" role="tablist"><button class="sbtn" role="tab" type="button" data-t="0" aria-selected="${demoTab===0}">١. الرابط والمرسل</button><button class="sbtn" role="tab" type="button" data-t="1" aria-selected="${demoTab===1}">٢. اكتشف النطاق الحقيقي</button></div>`;
+  if(demoTab===0){
+    const real=`http://${D}.password-reset.info/login`;
+    stBody.innerHTML=tabs+`<div class="st-sub">مرّر المؤشر فوق الرابط (أو اضغط عليه) ليظهر عنوانه الحقيقي أسفل الرسالة، تماماً كما يظهر في المتصفح وبرنامج البريد.</div>
+     <div class="mock-wrap"><div class="mock">${EX}<div class="hd"><div class="av">ت</div><div style="min-width:0"><div class="from">خدمات تقنية المعلومات</div>
+       <div class="addr" id="dAddr"><button class="fakelink" type="button" id="dShow" style="font-size:.85rem">إظهار عنوان المرسل</button></div></div></div>
+       <div class="subj">انتهت صلاحية كلمة المرور</div>
+       <div>عزيزي الموظف، انتهت صلاحية كلمة المرور الخاصة بك. لتجنّب تعطّل الحساب حدّثها الآن عبر <button class="fakelink" type="button" id="dLink">بوابة الخدمات الجامعية</button>.</div>
+       <div class="statusbar" id="dBar"></div></div></div>
+     <div class="lesson"><div class="box"><h3>ماذا نرى؟</h3><ul><li>النص يقول «بوابة الخدمات الجامعية»</li><li>العنوان الحقيقي يبدأ بـ <span class="ltr">${D}</span> لكنه ينتهي بنطاق آخر</li></ul></div>
+       <div class="box"><h3>القاعدة</h3><ul><li>اقرأ آخر جزء قبل أول «/» في العنوان: هذا هو صاحب الموقع</li><li>لا تحكم من الاسم الظاهر، بل من العنوان الكامل</li></ul></div></div>`;
+    const bar=$('#dBar'),l=$('#dLink'),show=()=>{bar.textContent=real},hide=()=>{bar.textContent=''};
+    l.onmouseenter=show;l.onfocus=show;l.onmouseleave=hide;l.onblur=hide;l.onclick=()=>{bar.textContent=bar.textContent?'':real};
+    $('#dShow').onclick=()=>{$('#dAddr').innerHTML=`<span style="color:#C2412D;font-weight:600">it-services@${B}-support.net</span>`};
+  }else{
+    const list=[
+     {u:`https://${D}/services`,ok:true,w:`النطاق هو ${D}، وما بعد «/» مجرد صفحة داخل الموقع.`},
+     {u:`https://${D}.account-verify.com`,ok:false,w:`يبدأ بنطاق الجامعة، لكن صاحب الموقع الحقيقي هو account-verify.com.`},
+     {u:`https://login.${D}`,ok:true,w:`login نطاق فرعي، والعنوان ينتهي بـ ${D}.`},
+     {u:`https://${B}-edu-sa.com`,ok:false,w:`استُبدلت النقاط بشرطات، فأصبح نطاقاً تجارياً لا علاقة له بالجامعة.`},
+     {u:`https://${D}.co/login`,ok:false,w:`إضافة «.co» في النهاية تجعله موقعاً مختلفاً تماماً.`},
+     {u:`https://portal-${B}.edu-sa.net`,ok:false,w:`النطاق الحقيقي هنا edu-sa.net، وليس نطاقاً تعليمياً سعودياً.`}
+    ];
+    stBody.innerHTML=tabs+`<div class="st-q" style="font-size:clamp(1.3rem,3vw,2rem)">أيّ هذه العناوين يتبع جامعة الطائف (<span class="ltr">${D}</span>) فعلاً؟</div>
+     <div class="st-sub">صوّت على كل عنوان، ثم اضغط عليه لكشف الجواب.</div>
+     <div class="domains">${list.map((x,i)=>`<button type="button" class="dom ${x.ok?'ok':'bad'}" data-k="${i}"><span class="ic">؟</span><span class="u">${esc(x.u)}</span><span class="why">${esc(x.w)}</span></button>`).join('')}</div>
+     <div class="st-nav"><span></span><button class="sbtn go" type="button" id="dAll">اكشف الكل</button></div>`;
+    const rev=b=>{b.classList.add('shown');b.querySelector('.ic').textContent=b.classList.contains('ok')?'✓':'✕'};
+    stBody.querySelectorAll('.dom').forEach(b=>b.onclick=()=>rev(b));$('#dAll').onclick=()=>stBody.querySelectorAll('.dom').forEach(rev);
+  }
+  stBody.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{demoTab=+b.dataset.t;toolDemo()});
+  stKeys=d=>{const n=demoTab+d;if(n===0||n===1){demoTab=n;toolDemo()}};
+}
+
+/* report */
+const QR_IMG='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYgAAAGIAQAAAABzOEqLAAADLUlEQVR42u1cuZYcMRACP///L+OgzrYD20EpYvZ4vT2thFpEgaQB4iVIEgAJAiQgLvJaUD75A//78oh/f/0MnFlVASGKgAhQJEBBzHcBGt3LEYFy/vcXC+JWUQWLLpDRPebHqgzrtyg2KRQUMVZPR0joSYnxLcWMxV0OY3XNj4CaUBQhiCGADIGnyJnHjO6xfnR/9dcvo3s/gtrXFAEIjE4LqR2fp4zuMT/SdlRTlTfmTfUDnq/u6yGkE1TZwijDutV1gmR0X/S7RGl297mEYqqKuUoUCNp/nOsHq8Ut2FtWKApt1rNUMrrn+vEJq8aP7++WFdfjur+ipn1KS5hGXTlp1QUhuh73/kNfFqywKoT9I/dG99x/MHLd8hkl5SgPUgyi9eNFv4ulH8UJjQvZna/73fN+V2BWglTFWEWYpkwwRu53r+vBlvWS8yiJGLYkqkNj9TTfrZ9gSOhJp1bK5D2YY3RPRwTIJMA0fhph+XrFYJLRPe2vWiqiGnlROlIJL1tVzI/z/koob7EWytE574p77T/u/aBir8+CXRmyK2tUW36clzzy52XHN1c2TTTPGN1rPa+VjuAA154fNmm0okWjezxfrX5KNXnNe2t7VlwZ3eP+ilpB1e+BbzqSsYlG97q/ypVYLbHInPcTaZW0G93bEdnhMkAnmXXgDuEJhl80ui/0Y614lIRoNvV+N74b3eP8arnCIkPGV0tZcjaj/fkL/ZhqtDPUZ91c5Q3Njyf10IoR98Y49ZJt7Zszurf9rtjpYWaG2fHuTjgKFX2v0T3mx58RlmpuarIYKzw8H9XN1JIJrJmqd5nYf9zPV7XgkccG50/sEzrqPShG93YE82gUyxcq16VEVrrFjE1Eo3s+Ihy5ynewwqtQc65QxVg90I/JrCbY1bcfnmLYnz/Qj7roHVetFqydPmtl3eie5iXsFncgz/rsMwdi3TG6t/lVC7YAStRn1w/qSGHvzzK65/5jrZf3+gewz3+sNUSj+2SE8gMASEg1WXW52LpuPX83gkkQLnZUI9wPGKvT/mp6qnIc6E8yWefQ58roXvuPJsOsoU+i1WljZVlG93LELxStzUHnEEYcAAAAAElFTkSuQmCC';
+function toolReport(){
+  const svg=`<img src="${QR_IMG}" alt="" style="width:100%;height:100%;image-rendering:pixelated">`;
+  stBody.innerHTML=`<div class="st-q">وصلتك رسالة مشبوهة؟</div>
+   <ol class="rsteps"><li><span>لا تضغط على أي رابط، ولا تفتح المرفقات، ولا ترد على المرسل.</span></li>
+     <li><span>أبلغ إدارة الأمن السيبراني عبر البريد أو نموذج الإبلاغ أدناه.</span></li>
+     <li><span>لا ترسل الرسالة لزملائك لتحذيرهم؛ فريق الأمن السيبراني سيتولى ذلك.</span></li>
+     <li><span>احذف الرسالة بعد الإبلاغ.</span></li></ol>
+   <div class="channels"><div style="display:grid;gap:12px;min-width:0">
+       <div><div class="lbl">البريد الإلكتروني للإبلاغ</div><div class="val ltr mono">${REPORT_EMAIL}</div></div>
+       <div><div class="lbl">نموذج الإبلاغ عن حوادث الأمن السيبراني</div><div style="font-size:1.1rem"><a href="${REPORT_FORM}" target="_blank" rel="noopener">فتح النموذج</a> · <a href="${REPORT_PAGE}" target="_blank" rel="noopener">صفحة الإبلاغ في موقع الجامعة</a></div></div>
+     </div>${svg?`<div style="display:grid;gap:6px;justify-items:center"><div class="qrbox" aria-label="رمز QR لنموذج الإبلاغ">${svg}</div><span class="lbl" style="font-size:.8rem">نموذج الإبلاغ الرسمي</span></div>`:''}</div>
+   <div class="lesson"><div class="box"><h3>ضغطت على الرابط بالخطأ؟</h3><ul><li>غيّر كلمة المرور فوراً من الموقع الرسمي</li><li>أبلغ مباشرة ولا تنتظر</li><li>لا تشعر بالحرج؛ الإبلاغ السريع يقلّل الضرر</li></ul></div>
+     <div class="box"><h3>شاركت رمز تحقق؟</h3><ul><li>تواصل مع الجهة المعنية (البنك أو الدعم الفني) فوراً</li><li>غيّر كلمة المرور وفعّل التحقق الثنائي</li><li>أبلغ إدارة الأمن السيبراني</li></ul></div></div>`;
+}
+
+/* quiz */
+const QUIZ=[
+ {q:'ما الذي تستهدفه الهندسة الاجتماعية بالدرجة الأولى؟',o:['العنصر البشري','الثغرات في الأنظمة','أجهزة الشبكة','قواعد البيانات'],a:0,e:'المهاجم يستغل الثقة والخوف والاستعجال لدى الإنسان، ولا يحتاج إلى ثغرة تقنية.'},
+ {q:'رسالة تقول: «سيتم إيقاف حسابك خلال ساعة». أيّ حيلة تستخدم؟',o:['العروض الوهمية','الاستعجال والتخويف','التحديث الدوري','لا شيء، رسالة طبيعية'],a:1,e:'تحديد وقت قصير مع التهديد بخسارة شيء يدفعك للتصرف قبل التفكير.'},
+ {q:'اتصل بك «موظف البنك» وطلب الرمز الذي وصلك لإيقاف عملية مشبوهة. ماذا تفعل؟',o:['أعطيه الرمز بسرعة','أعطيه نصف الرمز فقط','أرفض وأنهي المكالمة وأبلغ','أطلب منه الاتصال لاحقاً'],a:2,e:'لا توجد جهة رسمية تطلب رمز التحقق. من يطلبه يحاول الدخول إلى حسابك.'},
+ {q:'ما أفضل طريقة للتحقق من رابط في رسالة بريد؟',o:['الضغط عليه ورؤية الصفحة','تمرير المؤشر عليه لرؤية العنوان الحقيقي','الاعتماد على اسم المرسل','الرد على المرسل وسؤاله'],a:1,e:'العنوان الحقيقي يظهر أسفل الشاشة عند تمرير المؤشر، ويجب أن ينتهي بنطاق الجهة الرسمي.'},
+ {q:'أيّ القنوات التالية قد يستخدمها المهاجم للتصيّد؟',o:['البريد الإلكتروني فقط','الرسائل النصية والهاتف فقط','رموز QR فقط','كل ما سبق وغيره'],a:3,e:'المهاجم يستخدم أي قناة تصل إليك: البريد، الرسائل، الهاتف، منصات التواصل، رموز QR، وحتى التواصل المباشر.'},
+ {q:'وصلك مرفق من مصدر مجهول بعنوان «كشف المكافآت». ما التصرف الصحيح؟',o:['أفتحه للاطلاع فقط','أرسله لزملائي','لا أفتحه وأبلغ عنه','أحفظه لأفتحه لاحقاً'],a:2,e:'المرفقات المجهولة من أشهر طرق نشر البرمجيات الضارة، والعنوان المغري جزء من الحيلة.'},
+ {q:'شككت في رسالة. ما الإجراء الأفضل؟',o:['حذفها فقط','الإبلاغ عنها عبر القنوات المعتمدة','إعادة توجيهها للزملاء للتحذير','تجاهلها'],a:1,e:'الإبلاغ يحميك ويحمي زملاءك، لأن الرسالة غالباً وصلت لغيرك أيضاً. البريد: '+REPORT_EMAIL}
+];
+let qIdx=0,qShown=false;const SH=['▲','◆','●','■'];
+function toolQuiz(){
+  if(qIdx>=QUIZ.length){
+    stBody.innerHTML=`<div class="st-q">انتهت المسابقة 🎉</div><div class="st-sub">شكراً لمشاركتكم. ننتقل الآن إلى أسئلتكم واستفساراتكم.</div>
+     <div class="st-nav"><button class="sbtn" type="button" id="qb">→ رجوع</button><button class="sbtn go" type="button" id="qr">↺ من البداية</button></div>`;
+    $('#qb').onclick=()=>{qIdx=QUIZ.length-1;qShown=true;toolQuiz()};$('#qr').onclick=()=>{qIdx=0;qShown=false;toolQuiz()};
+    stKeys=d=>{if(d<0){qIdx=QUIZ.length-1;qShown=true;toolQuiz()}};return;
+  }
+  const q=QUIZ[qIdx];
+  stBody.innerHTML=`<span class="counter">سؤال ${qIdx+1} من ${QUIZ.length}</span>
+   <div class="st-q">${esc(q.q)}</div>
+   <div class="qopts ${qShown?'revealed':''}">${q.o.map((o,i)=>`<div class="qopt ${i===q.a?'right':''}"><span class="sh">${SH[i]}</span><span>${esc(o)}</span></div>`).join('')}</div>
+   ${qShown?`<div class="explain">${esc(q.e)}</div>`:''}
+   <div class="st-nav"><button class="sbtn" type="button" id="qp" ${qIdx?'':'disabled'}>→ السابق</button>
+     ${qShown?'':`<button class="sbtn go" type="button" id="qs">إظهار الإجابة</button>`}
+     <button class="sbtn ${qShown?'go':''}" type="button" id="qn">${qIdx===QUIZ.length-1?'إنهاء ←':'التالي ←'}</button></div>`;
+  const nav=d=>{if(d>0&&!qShown){qShown=true;toolQuiz();return}qIdx=Math.max(0,qIdx+d);qShown=false;toolQuiz()};
+  $('#qp').onclick=()=>nav(-1);$('#qn').onclick=()=>{qShown=true;nav(1)};if($('#qs'))$('#qs').onclick=()=>{qShown=true;toolQuiz()};
+  stKeys=nav;
+}
+
+/* recap */
+function toolRecap(){
+  stBody.innerHTML=`<div class="st-q">خمس قواعد تحميك من التصيّد</div>
+   <div class="rules">
+    <div class="rule"><b>تحقّق من المرسل</b><span>اقرأ العنوان الكامل، لا الاسم الظاهر فقط.</span></div>
+    <div class="rule"><b>لا تشارك رموز التحقق</b><span>لا أحد يحتاجها غيرك، ولا جهة رسمية تطلبها.</span></div>
+    <div class="rule"><b>افحص الرابط قبل الضغط</b><span>صاحب الموقع هو آخر جزء قبل أول «/».</span></div>
+    <div class="rule"><b>تأنَّ عند الاستعجال</b><span>الضغط عليك لتتصرف بسرعة علامة بحد ذاته.</span></div>
+    <div class="rule"><b>تجنّب المرفقات المجهولة</b><span>مهما كان عنوانها مغرياً.</span></div>
+    <div class="rule" style="border-color:var(--teal)"><b>وعند الشك: أبلغ</b><span class="ltr mono" style="font-size:1.2rem">${REPORT_EMAIL}</span></div>
+   </div>`;
+}
+
+/* open activity from link */
+(function(){const h=(location.hash||'').slice(1);const i=ACTS.findIndex(a=>a.id===h);if(i>=0)open(i)})();
+</script>
+
+</body></html>
