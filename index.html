@@ -185,7 +185,6 @@ const ACTS=[
  {id:'game',name:'تصيّد أم سليمة؟',desc:'8 رسائل حقيقية الشكل. هل تكشف المزيّف منها؟',slide:7,fn:()=>toolGame()},
  {id:'links',name:'افحص الرابط قبل أن تضغط',desc:'العنوان الظاهر والعنوان الحقيقي، واكتشف النطاق السليم.',slide:9,fn:()=>toolDemo()},
  {id:'report',name:'كيف تُبلغ؟',desc:'البريد الإلكتروني أو نموذج الإبلاغ عبر رمز QR.',slide:11,fn:()=>toolReport()},
- {id:'quiz',name:'المسابقة',desc:'7 أسئلة سريعة. من يجيب أسرع؟',slide:12,fn:()=>toolQuiz()},
  {id:'recap',name:'خمس قواعد تحميك',desc:'خلاصة الجلسة في شاشة واحدة.',slide:13,fn:()=>toolRecap()}
 ];
 
@@ -397,37 +396,6 @@ function toolReport(){
      </div>${svg?`<div style="display:grid;gap:6px;justify-items:center"><div class="qrbox" aria-label="رمز QR لنموذج الإبلاغ">${svg}</div><span class="lbl" style="font-size:.8rem">نموذج الإبلاغ الرسمي</span></div>`:''}</div>
    <div class="lesson"><div class="box"><h3>ضغطت على الرابط بالخطأ؟</h3><ul><li>غيّر كلمة المرور فوراً من الموقع الرسمي</li><li>أبلغ مباشرة ولا تنتظر</li><li>لا تشعر بالحرج؛ الإبلاغ السريع يقلّل الضرر</li></ul></div>
      <div class="box"><h3>شاركت رمز تحقق؟</h3><ul><li>تواصل مع الجهة المعنية (البنك أو الدعم الفني) فوراً</li><li>غيّر كلمة المرور وفعّل التحقق الثنائي</li><li>أبلغ إدارة الأمن السيبراني</li></ul></div></div>`;
-}
-
-/* quiz */
-const QUIZ=[
- {q:'ما الذي تستهدفه الهندسة الاجتماعية بالدرجة الأولى؟',o:['العنصر البشري','الثغرات في الأنظمة','أجهزة الشبكة','قواعد البيانات'],a:0,e:'المهاجم يستغل الثقة والخوف والاستعجال لدى الإنسان، ولا يحتاج إلى ثغرة تقنية.'},
- {q:'رسالة تقول: «سيتم إيقاف حسابك خلال ساعة». أيّ حيلة تستخدم؟',o:['العروض الوهمية','الاستعجال والتخويف','التحديث الدوري','لا شيء، رسالة طبيعية'],a:1,e:'تحديد وقت قصير مع التهديد بخسارة شيء يدفعك للتصرف قبل التفكير.'},
- {q:'اتصل بك «موظف البنك» وطلب الرمز الذي وصلك لإيقاف عملية مشبوهة. ماذا تفعل؟',o:['أعطيه الرمز بسرعة','أعطيه نصف الرمز فقط','أرفض وأنهي المكالمة وأبلغ','أطلب منه الاتصال لاحقاً'],a:2,e:'لا توجد جهة رسمية تطلب رمز التحقق. من يطلبه يحاول الدخول إلى حسابك.'},
- {q:'ما أفضل طريقة للتحقق من رابط في رسالة بريد؟',o:['الضغط عليه ورؤية الصفحة','تمرير المؤشر عليه لرؤية العنوان الحقيقي','الاعتماد على اسم المرسل','الرد على المرسل وسؤاله'],a:1,e:'العنوان الحقيقي يظهر أسفل الشاشة عند تمرير المؤشر، ويجب أن ينتهي بنطاق الجهة الرسمي.'},
- {q:'أيّ القنوات التالية قد يستخدمها المهاجم للتصيّد؟',o:['البريد الإلكتروني فقط','الرسائل النصية والهاتف فقط','رموز QR فقط','كل ما سبق وغيره'],a:3,e:'المهاجم يستخدم أي قناة تصل إليك: البريد، الرسائل، الهاتف، منصات التواصل، رموز QR، وحتى التواصل المباشر.'},
- {q:'وصلك مرفق من مصدر مجهول بعنوان «كشف المكافآت». ما التصرف الصحيح؟',o:['أفتحه للاطلاع فقط','أرسله لزملائي','لا أفتحه وأبلغ عنه','أحفظه لأفتحه لاحقاً'],a:2,e:'المرفقات المجهولة من أشهر طرق نشر البرمجيات الضارة، والعنوان المغري جزء من الحيلة.'},
- {q:'شككت في رسالة. ما الإجراء الأفضل؟',o:['حذفها فقط','الإبلاغ عنها عبر القنوات المعتمدة','إعادة توجيهها للزملاء للتحذير','تجاهلها'],a:1,e:'الإبلاغ يحميك ويحمي زملاءك، لأن الرسالة غالباً وصلت لغيرك أيضاً. البريد: '+REPORT_EMAIL}
-];
-let qIdx=0,qShown=false;const SH=['▲','◆','●','■'];
-function toolQuiz(){
-  if(qIdx>=QUIZ.length){
-    stBody.innerHTML=`<div class="st-q">انتهت المسابقة 🎉</div><div class="st-sub">شكراً لمشاركتكم. ننتقل الآن إلى أسئلتكم واستفساراتكم.</div>
-     <div class="st-nav"><button class="sbtn" type="button" id="qb">→ رجوع</button><button class="sbtn go" type="button" id="qr">↺ من البداية</button></div>`;
-    $('#qb').onclick=()=>{qIdx=QUIZ.length-1;qShown=true;toolQuiz()};$('#qr').onclick=()=>{qIdx=0;qShown=false;toolQuiz()};
-    stKeys=d=>{if(d<0){qIdx=QUIZ.length-1;qShown=true;toolQuiz()}};return;
-  }
-  const q=QUIZ[qIdx];
-  stBody.innerHTML=`<span class="counter">سؤال ${qIdx+1} من ${QUIZ.length}</span>
-   <div class="st-q">${esc(q.q)}</div>
-   <div class="qopts ${qShown?'revealed':''}">${q.o.map((o,i)=>`<div class="qopt ${i===q.a?'right':''}"><span class="sh">${SH[i]}</span><span>${esc(o)}</span></div>`).join('')}</div>
-   ${qShown?`<div class="explain">${esc(q.e)}</div>`:''}
-   <div class="st-nav"><button class="sbtn" type="button" id="qp" ${qIdx?'':'disabled'}>→ السابق</button>
-     ${qShown?'':`<button class="sbtn go" type="button" id="qs">إظهار الإجابة</button>`}
-     <button class="sbtn ${qShown?'go':''}" type="button" id="qn">${qIdx===QUIZ.length-1?'إنهاء ←':'التالي ←'}</button></div>`;
-  const nav=d=>{if(d>0&&!qShown){qShown=true;toolQuiz();return}qIdx=Math.max(0,qIdx+d);qShown=false;toolQuiz()};
-  $('#qp').onclick=()=>nav(-1);$('#qn').onclick=()=>{qShown=true;nav(1)};if($('#qs'))$('#qs').onclick=()=>{qShown=true;toolQuiz()};
-  stKeys=nav;
 }
 
 /* recap */
