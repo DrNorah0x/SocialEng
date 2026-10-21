@@ -188,7 +188,7 @@ const ACTS=[
  {id:'recap',name:'خمس قواعد تحميك',desc:'خلاصة الجلسة في شاشة واحدة.',slide:13,fn:()=>toolRecap()}
 ];
 
-$('#tiles').innerHTML=ACTS.map((a,i)=>`<button class="tile" type="button" data-a="${i}"><span class="top"><span class="num">${i+1}</span><span class="sl">الشريحة ${a.slide}</span></span><h2>${esc(a.name)}</h2><p>${esc(a.desc)}</p></button>`).join('');
+$('#tiles').innerHTML=ACTS.map((a,i)=>`<button class="tile" type="button" data-a="${i}"><span class="top"><span class="num">${i+1}</span><span class="sl"> </span></span><h2>${esc(a.name)}</h2><p>${esc(a.desc)}</p></button>`).join('');
 $('#tiles').onclick=e=>{const t=e.target.closest('[data-a]');if(t)open(+t.dataset.a)};
 
 const stage=$('#stage'),stBody=$('#stBody');let curA=-1,stKeys=null;
